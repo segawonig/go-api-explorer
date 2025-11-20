@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>JSON API Explorer — Presets</title>
+
+    <!-- Tailwind CDN for rapid UI development. Using CDN is convenient for demos.
+       Note: in a production pipeline you'd usually build Tailwind via npm to
+       pin a specific version and reduce bundle size. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      /* Minor custom styles to complement Tailwind utility classes */
+      .sidebar-scroll {
+        max-height: calc(100vh - 160px);
+        overflow: auto;
+      }
+      .api-card {
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
+      }
+      .api-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(2, 6, 23, 0.08);
+      }
+      .collapse-toggle {
+        transition: transform 0.15s ease;
+      }
+      .rotate-90 {
+        transform: rotate(90deg);
+      }
+
+      /* Mobile behavior: a simple sliding sidebar */
+      @media (max-width: 900px) {
+        .sidebar {
+          position: fixed;
+          z-index: 50;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 80%;
+          max-width: 360px;
+          transform: translateX(-110%);
+          transition: transform 0.25s ease;
+          background: rgba(255, 255, 255, 0.98);
+        }
+        .sidebar.open {
+          transform: translateX(0);
+        }
+        .overlay {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div class="min-h-screen flex flex-col">
+      <!-- MOBILE HEADER WITH SIDEBAR TOGGLE -->
+      <div
+        class="lg:hidden p-3 w-full flex items-center justify-between bg-white dark:bg-gray-800 border-b dark:border-gray-700"
+      >
+        <button
+          id="openSidebar"
+          class="p-2 bg-indigo-600 text-white rounded-md"
+        >
+          APIs
+        </button>
+        <div class="text-center flex-1">
+          <h1
+            class="text-lg font-semibold text-indigo-700 dark:text-indigo-300"
+          >
+            JSON API Explorer
+          </h1>
+          <div class="text-xs text-gray-500 dark:text-gray-400">
+            Presets library • Click to fill
+          </div>
+        </div>
+        <div class="w-6"></div>
+        <!-- Placeholder for spacing to align center -->
+      </div>
+
+      <div class="flex flex-1">
+        <!-- LEFT SIDEBAR (DESKTOP) -->
+        <aside
+          id="sidebar"
+          class="sidebar hidden lg:flex flex-col w-72 p-4 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700"
+        >
+          <div class="mb-4">
+            <h2 class="text-lg font-bold text-indigo-700 dark:text-indigo-300">
+              Popular Public APIs
+            </h2>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              Click an API to auto-fill the explorer
+            </p>
+          </div>
+
+          <div class="mb-3">
+            <input
+              id="apiSearch"
+              type="text"
+              placeholder="Search APIs, e.g. dog, weather"
+              class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400 text-sm bg-gray-50 dark:bg-gray-700"
+            />
+          </div>
+
+          <nav class="flex-1 overflow-y-auto sidebar-scroll">
+            <!-- categories will be injected here by script.js -->
+            <div id="categories" class="space-y-3"></div>
+          </nav>
+
+          <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+            <div>
+              Categories: Animals, Fun, Space, Weather, Crypto, Media, Tech,
+              Utility, Random
+            </div>
+          </div>
+        </aside>
+
+        <!-- MOBILE SLIDING SIDEBAR -->
+        <div
+          id="mobileSidebar"
+          class="sidebar lg:hidden fixed left-0 top-0 bottom-0 z-50 w-80 p-4 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-lg font-bold text-indigo-700 dark:text-indigo-300">
+              APIs
+            </h2>
+            <button id="closeSidebar" class="p-2">✕</button>
+          </div>
+          <input
+            id="apiSearchMobile"
+            type="text"
+            placeholder="Search APIs"
+            class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400 text-sm bg-gray-50 dark:bg-gray-700 mb-3"
+          />
+          <nav class="overflow-y-auto sidebar-scroll">
+            <div id="categoriesMobile" class="space-y-3"></div>
+          </nav>
+        </div>
+
+        <div
+          id="overlay"
+          class="overlay hidden lg:hidden fixed inset-0 bg-black bg-opacity-30"
+          style="display: none"
+        ></div>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 p-6 flex justify-center">
+          <div class="w-full max-w-6xl space-y-6">
+            <!-- Header: explanatory and controls -->
+            <header
+              class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 flex items-center justify-between"
+            >
+              <div>
+                <h1
+                  class="text-2xl font-bold text-indigo-700 dark:text-indigo-300"
+                >
+                  JSON API Explorer
+                </h1>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                  Quick presets: click to populate URL, method and body.
+                </p>
+              </div>
+              <div class="hidden md:flex items-center space-x-3">
+                <button
+                  id="clearBtn"
+                  class="text-sm px-3 py-2 border rounded-md bg-gray-50 dark:bg-gray-700"
+                >
+                  Clear
+                </button>
+                <button
+                  id="sendBtnMain"
+                  class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg"
+                >
+                  Send
+                </button>
+              </div>
+            </header>
+
+            <!-- Explorer section: form + presets/info -->
+            <section
+              class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 grid grid-cols-1 lg:grid-cols-3 gap-6"
+            >
+              <!-- Form area -->
+              <div class="lg:col-span-2 space-y-4">
+                <div class="flex gap-3 items-center flex-wrap">
+                  <select
+                    id="methodSelect"
+                    class="w-28 p-2 border rounded-md bg-white dark:bg-gray-700"
+                  >
+                    <option>GET</option>
+                    <option>POST</option>
+                    <option>PUT</option>
+                    <option>DELETE</option>
+                  </select>
+                  <button
+                    id="sendBtnInline"
+                    class="md:hidden bg-indigo-600 text-white px-4 py-2 rounded-md"
+                  >
+                    Send
+                  </button>
+                  <input
+                    id="urlInput"
+                    type="text"
+                    placeholder="https://api.example.com/endpoint"
+                    class="flex-1 p-3 border rounded-md bg-gray-50 dark:bg-gray-700"
+                  />
+                </div>
+
+                <!-- Request body editor -->
+                <label class="text-sm text-gray-600 dark:text-gray-400"
+                  >Request Body (JSON)</label
+                >
+                <textarea
+                  id="bodyInput"
+                  class="w-full p-3 border rounded-md h-40 bg-gray-50 dark:bg-gray-700"
+                  placeholder='{"key": "value"}'
+                ></textarea>
+
+                <!-- Request body controls: Pretty / Raw affect request body only -->
+                <div class="flex items-center space-x-3">
+                  <button
+                    id="prettyBtn"
+                    class="px-3 py-2 border rounded-md text-sm"
+                  >
+                    Pretty (format request)
+                  </button>
+                  <button
+                    id="rawBtn"
+                    class="px-3 py-2 border rounded-md text-sm"
+                  >
+                    Raw (minify request)
+                  </button>
+                  <div
+                    id="loadingIndicator"
+                    class="ml-auto text-sm text-gray-500 hidden"
+                  >
+                    Loading…
+                  </div>
+                </div>
+              </div>
+
+              <!-- Preset info and Response area -->
+              <div class="space-y-4">
+                <div class="p-3 border rounded-md bg-gray-50 dark:bg-gray-700">
+                  <div class="flex items-center justify-between mb-2">
+                    <strong class="text-sm text-gray-700 dark:text-gray-200"
+                      >Preset Info</strong
+                    >
+                    <button
+                      id="copyBtn"
+                      class="text-xs px-2 py-1 border rounded"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                  <div
+                    id="presetInfo"
+                    class="text-xs text-gray-600 dark:text-gray-300 min-h-[48px]"
+                  >
+                    Click an API from the left to see details.
+                  </div>
+                </div>
+
+                <div class="p-3 border rounded-md bg-gray-50 dark:bg-gray-700">
+                  <strong class="text-sm text-gray-700 dark:text-gray-200"
+                    >Response</strong
+                  >
+                  <pre
+                    id="responseOutput"
+                    class="text-xs mt-2 max-h-64 overflow-auto bg-transparent"
+                  ></pre>
+                </div>
+
+                <div class="p-3 border rounded-md bg-gray-50 dark:bg-gray-700">
+                  <strong class="text-sm text-gray-700 dark:text-gray-200"
+                    >Examples</strong
+                  >
+                  <div
+                    id="examples"
+                    class="text-xs text-gray-600 dark:text-gray-300 mt-2"
+                  ></div>
+                </div>
+              </div>
+            </section>
+
+            <footer
+              class="text-center text-sm text-gray-500 dark:text-gray-400"
+            >
+              JSON API Explorer — presets library • Deployable on Render
+            </footer>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Script loaded as external file for cleanliness -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>
