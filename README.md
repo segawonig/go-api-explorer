@@ -1,7 +1,7 @@
 # Go API Explorer
 
-![Go](https://img.shields.io/badge/go-latest-blue)  
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-3.4.17-brightgreen)  
+![Go](https://img.shields.io/badge/go-latest-blue)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-3.4.17-brightgreen)
 ![Render](https://img.shields.io/badge/render-deployed-blue)
 
 A minimal, production-ready **JSON API testing and exploration tool** written in Go.  
@@ -28,6 +28,35 @@ Designed for simplicity, learning, and smooth deployment with interactive fronte
 - **Tailwind CSS** – frontend styling and responsive layout  
 - **Vanilla JS** – interactive form handling, presets, and dynamic sidebar  
 - **In-memory presets** – stored in JS object for demo / portfolio use  
+
+---
+
+## TODO / Improvements
+
+- [ ] **Direct API requests (bypass proxy)**  
+  Add an optional toggle/button to send requests directly from the frontend for same-origin APIs. Useful for APIs that don't require CORS proxying.
+
+- [ ] **CORS / Cross-Origin handling**  
+  Improve handling of external APIs with CORS restrictions. Consider:
+  - Adding `mode: 'cors'` and credentials options to `fetch`
+  - Fallback to server-side proxy for APIs with strict CORS
+
+- [ ] **Error handling & validation**  
+  - Better frontend validation for URLs and JSON input  
+  - Show more descriptive errors when proxy request fails
+
+- [ ] **Request presets enhancements**  
+  - Add custom user presets saved locally (localStorage)  
+  - Support for more HTTP methods and headers
+
+- [ ] **UI/UX improvements**  
+  - Responsive layout tweaks for mobile (e.g., send button alignment)  
+  - Optional dark/light theme toggle  
+  - Loading spinner improvements
+
+- [ ] **Security / Safety**  
+  - Rate-limiting requests to prevent abuse via the proxy  
+  - Input sanitization for request body
 
 ---
 
